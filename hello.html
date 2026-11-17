@@ -1,0 +1,15 @@
+<div class="ax-stack" style="padding: 16px">
+  <div class="ax-card ax-stack">
+    <b>Hello from a sandboxed frame</b>
+    <span class="ax-muted">This pane is your own HTML. Axis themes it, seals it (no network, no storage) and hands it the slot's props.</span>
+    <span>Project: <code id="project">waiting for props…</code></span>
+  </div>
+</div>
+<script>
+  // window.axis is the only bridge to Axis. props() is null until the first post.
+  function show(props) {
+    document.getElementById('project').textContent = (props && props.projectPath) || 'no project';
+  }
+  show(window.axis.props());
+  window.axis.onProps(show);
+</script>

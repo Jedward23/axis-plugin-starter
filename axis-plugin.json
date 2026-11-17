@@ -1,0 +1,44 @@
+{
+  "id": "example.hello-axis",
+  "name": "Hello Axis",
+  "version": "1.0.0",
+  "publisher": "Axis examples",
+  "description": "The smallest plugin that uses all three ways to draw: a sidebar section, a ⌘K command and a workbench pane.",
+  "engines": { "axis": "^1.0.0" },
+  "permissions": [],
+  "contributes": {
+    "sidebar.section": [
+      {
+        "key": "hello",
+        "title": "Hello",
+        "render": {
+          "runtime": "tree",
+          "tree": {
+            "type": "Stack",
+            "children": [
+              { "type": "Text", "props": { "content": "Hello from a plugin 👋" } },
+              { "type": "Text", "props": { "content": { "$bind": "projectPath" }, "variant": "muted" } }
+            ]
+          }
+        }
+      }
+    ],
+    "palette.command": [
+      {
+        "key": "say-hello",
+        "title": "Say hello",
+        "action": { "kind": "insert-text", "text": "Hello from the Hello Axis plugin!" }
+      }
+    ],
+    "workbench.pane": [
+      {
+        "key": "hello-pane",
+        "title": "Hello pane",
+        "render": { "runtime": "frame", "entry": "hello.html" }
+      }
+    ],
+    "workbench.addMenu": [
+      { "key": "add-hello-pane", "title": "Hello pane", "pane": "hello-pane" }
+    ]
+  }
+}
